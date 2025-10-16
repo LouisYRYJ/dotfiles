@@ -2,15 +2,55 @@
 
 Personal development environment configuration files.
 
-## Quick Setup
+## Structure
 
-Run the setup script to install essential development tools:
-
-```bash
-./generic_setup.sh
+```
+dotfiles/
+├── config/
+│   ├── shell/           # Shell configurations
+│   │   ├── bashrc
+│   │   └── zshrc
+│   ├── editors/         # Editor configurations
+│   │   ├── vimrc
+│   │   └── tmux.conf
+│   ├── git/             # Git configuration
+│   │   └── gitconfig
+│   └── vscode/          # VS Code configuration
+│       ├── extensions.txt
+│       └── settings.json
+├── scripts/
+│   ├── generic_setup.sh  # Install dev tools
+│   ├── setup-vscode.sh   # Install VS Code config
+│   └── export-vscode.sh  # Export current VS Code config
+└── install.sh            # Symlink all dotfiles
 ```
 
-This will install:
+## Quick Setup
+
+1. Clone the repository:
+```bash
+git clone <your-repo-url> ~/dotfiles
+cd ~/dotfiles
+```
+
+2. Install dotfiles (creates symlinks):
+```bash
+./install.sh
+```
+
+3. Install development tools:
+```bash
+./scripts/generic_setup.sh
+```
+
+4. Set up VS Code (optional):
+```bash
+./scripts/setup-vscode.sh
+```
+
+## Development Tools
+
+The `generic_setup.sh` script installs:
 - curl
 - uv (Python package manager)
 - Rust/cargo
@@ -18,24 +58,17 @@ This will install:
 - Node.js and npm
 - Claude Code CLI
 
-## Manual Installation
+## VS Code Setup
 
-To use these dotfiles, clone the repository and create symlinks:
-
+**Export your current VS Code config:**
 ```bash
-git clone <your-repo-url> ~/dotfiles
-cd ~/dotfiles
-./install.sh
+./scripts/export-vscode.sh
 ```
 
-## What's Included
-
-- **generic_setup.sh** - Automated setup script for development tools
-- **.bashrc** - Bash shell configuration
-- **.zshrc** - Zsh shell configuration with Powerlevel10k
-- **.vimrc** - Vim editor configuration
-- **.tmux.conf** - Tmux terminal multiplexer configuration
-- **.gitconfig** - Git configuration
+**Install VS Code config on a new machine:**
+```bash
+./scripts/setup-vscode.sh
+```
 
 ## Configurations
 

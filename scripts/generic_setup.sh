@@ -91,6 +91,22 @@ else
 fi
 echo ""
 
+# Install direnv
+if command -v direnv &> /dev/null; then
+    echo "✓ direnv already installed"
+else
+    echo "Installing direnv..."
+    if [ "$PKG_MANAGER" = "apt-get" ]; then
+        $INSTALL_CMD direnv
+    elif [ "$PKG_MANAGER" = "yum" ]; then
+        $INSTALL_CMD direnv
+    elif [ "$PKG_MANAGER" = "brew" ]; then
+        $INSTALL_CMD direnv
+    fi
+    echo "✓ direnv installed"
+fi
+echo ""
+
 # Install Claude Code CLI
 if command -v claude &> /dev/null; then
     echo "✓ Claude Code already installed"
@@ -113,4 +129,5 @@ echo "  - cargo: $(cargo --version)"
 echo "  - ripgrep: $(rg --version | head -n1)"
 echo "  - node: $(node --version 2>/dev/null || echo 'restart shell to use')"
 echo "  - npm: $(npm --version 2>/dev/null || echo 'restart shell to use')"
+echo "  - direnv: $(direnv --version 2>/dev/null || echo 'restart shell to use')"
 echo "  - claude: $(claude --version 2>/dev/null || echo 'restart shell to use')"
